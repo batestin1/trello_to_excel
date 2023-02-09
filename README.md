@@ -6,7 +6,9 @@
 <h3> <p align="center"> TRELLO TO EXCEL </p> </h3>
 <h3> <p align="center"> ================= </p> </h3>
 
-<p align="center">![delta](img/capa.png)</p>
+<p align="center">
+  <img src="img/capa.png">
+</p>
 
 >> <h3> About the project </h3>
 
