@@ -76,10 +76,10 @@ def create_board():
                                 "idModel": i.id,
                                 "modelType": "board",
                                 "name": col,
-                                "option": str(val),
-                                "type": "checkbox",
+                                "type": "text",
+                                "values": str(val),
                                 "pos": "bottom",
-                                "display_cardFront": "true"}
+                                "display_cardFront": True}
                             )
                             response = requests.request(
                                 methods[1],
