@@ -58,3 +58,6 @@ def create_list():
         print("List built successfully")
     else:
         print("There is no worksheet with this name")
+
+if __name__ == "__main__":
+    create_list()

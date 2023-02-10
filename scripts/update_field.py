@@ -78,3 +78,6 @@ def update_field():
                                 print(f"custom field '{field_name}' not found")
                 else:
                     print(f"Board '{i.name}' not found")
+
+if __name__ == "__main__":
+    update_field()

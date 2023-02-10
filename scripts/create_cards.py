@@ -65,3 +65,6 @@ def create_card():
                 else:
                     print("There is no worksheet with this name")
     print("Cards built successfully")
+
+if __name__ == "__main__":
+    create_card()

@@ -17,14 +17,11 @@
 # imports
 
 from create_board import create_board
-from create_list import create_list
-from create_cards import create_card
-from update_field import update_field
-import time
-import concurrent.futures
+import subprocess
 
 if __name__ == "__main__":
     create_board()
-    create_list()
-    create_card()
-    update_field()
+    print(subprocess.run(["python", "scripts/create_list.py"]))
+    print(subprocess.run(["python", "scripts/create_cards.py"]))
+    print(subprocess.run(["python", "scripts/update_field.py"]))
+    print("Finishid!")
