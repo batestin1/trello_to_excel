@@ -34,6 +34,7 @@ dir = content_parm["dir_excel"]
 field_get_id = content_parm['field_get_id']
 methods = content_parm['methods']
 worksheet = content_parm['worksheet']
+list_title = content_parm['list']
 df = pd.read_excel(dir)
 client = TrelloClient(
     api_key=yourKey,
@@ -45,7 +46,7 @@ def create_list():
     name_list = list(values)
     if worksheet in name_list:
         df = pd.read_excel(dir, sheet_name=worksheet)
-        unique_values = df["Current Week Action"].unique()
+        unique_values = df[list_title].unique()
         for title in unique_values:
             boards = client.list_boards()
             for board in boards:

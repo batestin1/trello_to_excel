@@ -1,6 +1,8 @@
 {
     "dir_excel": "database/dataset.xlsx",
     "worksheet": "BenchRolloff Report",
+    "list": "Current Week Action",
+    "card": "Practitioner Notes ID",
     "url_base": "https://api.trello.com/1/",
     "field_get_id": "members/me/boards?fields=name,url",
     "url_board": "https://api.trello.com/1/boards/",

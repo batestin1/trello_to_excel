@@ -49,17 +49,8 @@ def del_boards():
     values = df.keys()
     name_list = list(values)
     if worksheet in name_list:
-        print(f"This operation will delete Only the board {worksheet}")
-        choiced = input("Are you sure: [Y/N] ")[0].upper()
-        if choiced == 'Y':
-            boards = client.list_boards()
-            for board in boards:
-                if board.name == worksheet:
-                    board.delete()
-        else:
-            print("Deletion not made")
-        print('Complete deletion')
-
-if __name__ == "__main__":
-    del_boards()
-
+        boards = client.list_boards()
+        for board in boards:
+            if board.name == worksheet:
+                board.delete()
+        print('Cleaning the boards for updating')

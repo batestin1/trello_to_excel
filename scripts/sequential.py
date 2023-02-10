@@ -19,12 +19,12 @@
 from create_board import create_board
 from create_list import create_list
 from create_cards import create_card
+from update_field import update_field
 import time
-from tqdm import tqdm
+import concurrent.futures
 
-def sequential():
-    start_time = time.time()
-    for func in tqdm([create_board, create_list, create_card], desc="Functions", leave=False):
-        func()
-
-    return print(f"""Execution Time: {time.time() - start_time}""")
+if __name__ == "__main__":
+    create_board()
+    create_list()
+    create_card()
+    update_field()
