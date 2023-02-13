@@ -45,4 +45,3 @@ def parameters():
     with open('paramenters/paramenters.json', 'w') as f:
         json.dump(data, f, indent=4)
 
-parameters()

@@ -1,28 +1,34 @@
-#!/usr/local/bin/python3
+#!/bin/bash
 
 ###################################################################################################
 #                                                                                                 #
-# SCRIPT FILE: sequential.py                                                                      #
+# SCRIPT FILE: init.sh                                                                            #
 # CREATION DATE: 02/02/2023                                                                       #
 # HOUR: 10:10                                                                                     #
-# DISTRIBUTION USED: UBUNTU                                                                       #
+# DISTRIBUTION USED: Ubuntu                                                                       #
 # OPERATIONAL SYSTEM: LINUX                                                                       #
 #                                                                             DEVELOPED BY: BATES #
 ###################################################################################################
 #                                                                                                 #
-# SUMMARY: Execut the functions of the project                                                    #
+# SUMMARY: Starting the projet on Shell                                                           #
 #                                                                                                 #
 ###################################################################################################
 
-# imports
 
-from create_board import create_board
-import subprocess
+os=`uname -s`
 
-def sequential():
-    create_board()
-    print(subprocess.run(["python", "scripts/create_list.py"]))
-    print(subprocess.run(["python", "scripts/create_cards.py"]))
-    print(subprocess.run(["python", "scripts/update_field.py"]))
-    print("Finishid!")
-
+if [ "$os" = "Linux" ]; then
+  sudo apt-get update
+  sudo apt-get install -y python3 python3-pip
+  pip3 install -r pip/requirements.txt
+  python3 trello/scripts/main.py
+elif [ "$os" = "Darwin" ]; then
+  echo "Installing Brew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  brew install python
+  pip install -r pips/requeriments.txt
+  python scripts/main.py
+else
+  cmd /c ./exec/win/init.bat
+  exit 1
+fi
