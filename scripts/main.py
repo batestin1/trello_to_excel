@@ -10,16 +10,37 @@
 #                                                                             DEVELOPED BY: BATES #
 ###################################################################################################
 #                                                                                                 #
-# SUMMARY: Initit the project                                                                     #
+# SUMMARY: Init the project                                                                       #
 #                                                                                                 #
 ###################################################################################################
 
 # imports
 from keys import keys
-from params import parameters
-from sequential import sequential
+from excel_to_trello import create_board
+from trello_to_excel import to_excel
+from optional.del_board import del_boards
+
 
 if __name__ == "__main__":
-    keys()
-    parameters()
-    sequential()
+    while True:
+        choice = int(input("""
+        What do you want to do:
+        [1] - Excel To Trello
+        [2] - Trello To Excel
+        [3] - Del Board on Trello
+        R: """))
+        if choice == 1:
+            keys()
+            create_board()
+            break
+        elif choice == 2:
+            keys()
+            to_excel()
+            break
+        elif choice == 3:
+            keys()
+            del_boards()
+            break
+        else:
+            print("Invalid choice. Please choose a valid option.\n")
+

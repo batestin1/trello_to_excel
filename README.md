@@ -19,23 +19,23 @@
 
 <p>To run the project, there is a simpler way. First, clone the repository to any destination on your machine.</p>
 
-<p>If your operating system is Windows:
-  <ul>
-    <li>Open trello folder via terminal</li>
-    <li>Enter the code: .\exec\win\init.bat</li>
-    <li>(You can also set this path in Windows PATH)</li>
-  </ul>
-</p>
+<p> In the root directory, open your terminal and type </p>
 
-<p>If your operating system is different from Windows (MAC or LINUX):
-  <ul>
-    <li>Open trello folder via terminal</li>
-    <li>Enter the code: ./exec/others/init.sh</li>
-  </ul>
-</p>
+```
+python scripts/main.py 
 
-<p>The project starts with the "init.py" script that will ask you for some parameters: Keyacess, TokenAcess, Path+Excel_Name, and name of the worksheet you want to automate. Once this is done, it will create a workspace in <b>Trello</b>, inserting the lists, cards and custom fields. In the end, you will be able to use <b>Trello</b> normally.</p>
+```
+<p>It will give you the following options: </p>
 
+```
+        What do you want to do:
+        [1] - Excel To Trello
+        [2] - Trello To Excel
+        [3] - Del Board on Trello
+
+```
+
+<i>Note: For the project to work, you need the Trello access keys and that the excel file is inside the root directory called database/</i>.
 <i>Note: For custom fields to work, you need to be a premium Trello member</i>.
 
 <p>All API documentation can be found here: https://developer.atlassian.com/cloud/trello/</p>

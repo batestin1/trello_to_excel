@@ -15,42 +15,47 @@
 ###################################################################################################
 
 # imports
-
-import requests
-from trello import TrelloClient
-import pandas as pd
 import json
+import pandas as pd
+import requests
+import time
 
-parKeys=open('paramenters/keys.json')
-parameter = open('paramenters/paramenters.json')
-data_parm = parameter.read()
-data = parKeys.read()
-content = json.loads(data)
-content_parm = json.loads(data_parm)
-yourKey = str(content['yourKey'])
-yourToken = str(content['yourToken'])
-url_board = content_parm['url_board']
-url_base = content_parm['url_base']
-dir = content_parm["dir_excel"]
-field_get_id = content_parm['field_get_id']
-methods = content_parm['methods']
-worksheet = content_parm['worksheet']
+# load configuration parameters from JSON files
+with open('paramenters/keys.json') as f:
+    keys = json.load(f)
 
-df = pd.read_excel(dir)
+with open('paramenters/paramenters.json') as f:
+    parameters = json.load(f)
 
+# set configuration variables
+yourKey = keys['yourKey']
+yourToken = keys['yourToken']
+url_board = parameters['url_board']
+url_base = parameters['url_base']
+dir = parameters["dir_excel"]
+field_get_id = parameters['field_get_id']
+methods = parameters['methods']
+worksheet = parameters['worksheet']
 
-client = TrelloClient(
-    api_key=yourKey,
-    token=yourToken
-)
+# load the Excel file into a pandas dataframe
+df = pd.read_excel(dir,sheet_name=None)
 
 def del_boards():
-    df = pd.read_excel(f"./{dir}", sheet_name=None)
-    values = df.keys()
-    name_list = list(values)
-    if worksheet in name_list:
-        boards = client.list_boards()
-        for board in boards:
-            if board.name == worksheet:
-                board.delete()
-        print('Cleaning the boards for updating')
+    # check if the worksheet exists in the Excel file
+    if worksheet not in df:
+        print(f"There is no worksheet with the name {worksheet}")
+        return
+
+    # get the ID of all boards with the same name on Trello
+    url = f"{url_base}{field_get_id}&key={yourKey}&token={yourToken}"
+    response = requests.get(url).json()
+    board_ids = [item['id'] for item in response if item['name'] == worksheet]
+
+    # delete all boards with the same name on Trello
+    for board_id in board_ids:
+        url = f"{url_board}{board_id}"
+        headers = {"Accept": "application/json", "Content-Type": "application/json"}
+        query = {"key": yourKey, "token": yourToken}
+        response = requests.delete(url, headers=headers, params=query)
+        time.sleep(1)  # add delay to avoid hitting the Trello API rate limit
+

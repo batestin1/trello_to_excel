@@ -1,15 +1,19 @@
 {
     "dir_excel": "database/dataset.xlsx",
     "worksheet": "BenchRolloff Report",
-    "list": "Practitioner Notes Id",
-    "card": "Current Week Action",
+    "list": "Current Week Action",
+    "card": "Practitioner Notes Id",
     "url_base": "https://api.trello.com/1/",
     "field_get_id": "members/me/boards?fields=name,url",
     "url_board": "https://api.trello.com/1/boards/",
+    "url_export":"https://trello.com/1/organizations/",
+    "dir_backup":"backup",
+    "field_for_url": "attachments=true&attachment_fields=all&members=true&member_fields=all&checklists=all&fields=all&customFieldItems=true&format=csv",
     "methods": [
         "GET",
         "POST",
         "PUT",
         "DELETE"
-    ]
+    ],
+    "prefs_background": "grey"
 }
