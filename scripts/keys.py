@@ -18,6 +18,7 @@
 
 import json
 import requests
+import os
 
 
 
@@ -53,5 +54,29 @@ def keys():
         print("Access Key and Token no It is authenticated and validated!")
         print("review your access")
 
-        
+
+def change_excel():
+
+    path = "database/"
+
+    for filename in os.listdir(path):
+
+        if filename.endswith(".xlsx"):
+
+            if filename != "database.xlsx":
+                os.rename(os.path.join(path, filename), os.path.join(path, "database.xlsx"))
+                print(f"File {filename} renamed to database.xlsx")
+
+            else:
+                print("The file already has the name database.xlsx")
+
+        elif filename.endswith((".xls", ".xlsm", ".xlsb", ".xlt", ".xltx", ".xltm")):
+
+            new_filename = os.path.splitext(filename)[0] + ".xlsx"
+            os.rename(os.path.join(path, filename), os.path.join(path, new_filename))
+            print(f"File {filename} renamed to {new_filename}")
+
+        else:
+            print(f"File {filename} is not an Excel file")   
+
 

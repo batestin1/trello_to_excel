@@ -15,7 +15,7 @@
 ###################################################################################################
 
 # imports
-from keys import keys
+from keys import keys, change_excel
 from excel_to_trello import create_board
 from trello_to_excel import to_excel
 from optional.del_board import del_boards
@@ -31,14 +31,17 @@ if __name__ == "__main__":
         R: """))
         if choice == 1:
             keys()
+            change_excel()
             create_board()
             break
         elif choice == 2:
             keys()
+            change_excel()
             to_excel()
             break
         elif choice == 3:
             keys()
+            change_excel()
             del_boards()
             break
         else:
